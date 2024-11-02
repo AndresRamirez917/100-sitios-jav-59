@@ -1,1 +1,42 @@
-/*# sourceMappingURL=styles.css.map */
+::-moz-placeholder {
+  font-family: "Font Awesome 5 free";
+  font-weight: 500;
+  content: "\f007";
+  text-align: right;
+}
+
+::placeholder {
+  font-family: "Font Awesome 5 free";
+  font-weight: 500;
+  content: "\f007";
+  text-align: right;
+}
+
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 30px;
+  overflow: hidden;
+}
+
+#mainheader .container h2 {
+  text-align: center;
+}
+#mainheader .container .task-container {
+  width: 300px;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 10rem;
+}
+#mainheader .container .task-container li {
+  margin-left: -2rem;
+  padding: 0.5rem 0;
+  background: #f0f0f0;
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+#mainheader .container .task-container span {
+  margin-left: 10rem;
+  cursor: pointer;
+}/*# sourceMappingURL=styles.css.map */
