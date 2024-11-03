@@ -41,7 +41,6 @@ class TaskManager {
         this.tasks.forEach(task => {
             const li = document.createElement("li");
             li.textContent = task.name;
-
             //Botón para eliminar la tarea
             const removeBtn = document.createElement("span");
             removeBtn.textContent = "❌";
