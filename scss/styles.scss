@@ -47,6 +47,12 @@ body, html {
             margin: 20px 0;
         }
         .task-container {
+            // #tasklist {
+            //     display: flex;
+            //     flex: 1;
+            //     gap:100px;
+            //     color: red;
+            // }
             width: 90%;
             margin: 0 auto;
             padding: 10px 20px 10px 20px;
@@ -79,14 +85,21 @@ body, html {
                     background: #f0f0f0;
                     margin-bottom: 5px;
                     display: flex;
-                    justify-content: space-between;
+                    gap: 1px;
+                    //justify-content:space-between;
                     background: #aed3f937;
                     text-transform: capitalize;
                 }
                 span {
-                    margin-left: 10rem;
+                    display: flex;
+                    margin-left: 1rem;
                     cursor: pointer;
+                    justify-content: end; 
                 }
+                .edit {
+                    width: 100%;
+                }
+             
         }
     }
 }

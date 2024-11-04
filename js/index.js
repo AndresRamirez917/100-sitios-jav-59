@@ -24,7 +24,7 @@ class TaskManager {
             this.displayTasks(); // Mostrar las tareas en la lista
             taskInput.value = ""; // Limpiar el input
         }else {
-            swal({
+            swal.fire({
                 title: `El campo no puede estar vacío`,
                 icon: "warning",
                  })
@@ -41,12 +41,19 @@ class TaskManager {
         this.tasks.forEach(task => {
             const li = document.createElement("li");
             li.textContent = task.name;
+
             //Botón para eliminar la tarea
             const removeBtn = document.createElement("span");
+            const editBtn = document.createElement("span");
             removeBtn.textContent = "❌";
+            editBtn.textContent = "🖌";
+            editBtn.classList.add("edit");
             removeBtn.classList.add("remove");
+            editBtn.onclick = () => this.editTask(task.id);
             removeBtn.onclick = () => this.removeTask(task.id);
 
+
+            li.appendChild(editBtn);
             li.appendChild(removeBtn);
             taskList.appendChild(li);
         });
@@ -57,6 +64,34 @@ class TaskManager {
         this.tasks = this.tasks.filter(task => task.id !== id);
         this.saveTasks(); // Guardar la lista actualizada en LocalStorage
         this.displayTasks();
+    }
+
+    //Método para editar una tarea por ID
+    editTask(id) {
+        Swal.fire({
+            title: 'Editar tarea',
+            input: 'text',
+            inputLabel: 'Nuevo nombre de la tarea',
+            inputPlaceholder: 'Ingresa el nuevo nombre',
+            showCancelButton: true,
+            inputValidator: (value) => {
+                if (!value) {
+                    return '¡El campo no puede estar vacío!';
+                }
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const newTaskName = result.value.trim();
+                if (newTaskName) {
+                    const task = this.tasks.find(task => task.id === id);
+                    if (task) {
+                        task.name = newTaskName;
+                        this.saveTasks(); // Guardar la lista actualizada en LocalStorage
+                        this.displayTasks(); // Actualizar la lista mostrada
+                    }
+                } 
+            }
+        });
     }
 
      // Guardar las tareas en LocalStorage
@@ -70,18 +105,9 @@ class TaskManager {
         return tasks ? JSON.parse(tasks) : [];
     }
 }
+
 // Crear una instancia de TaskManager
-const btn_newTask = document.getElementById('btn-newTask').addEventListener('keydown', function(event) {
-    if (event.key === 'Enter') {
-        event.preventDefault(); // Evita el comportamiento predeterminado del Enter
-        const btn_newTask = event.target.value;
-        if (btn_newTask.trim() !== '') { // Verifica que el campo no esté vacío
-            const newListItem = document.createElement('li');
-            newListItem.textContent = btn_newTask;
-            document.getElementById('list').appendChild(newListItem);
-            event.target.value = ''; // Limpia el campo de entrada
-        }
-    }
-});
 const taskManager = new TaskManager();
 taskManager.displayTasks();
+
+
