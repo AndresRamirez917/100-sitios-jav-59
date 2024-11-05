@@ -13,6 +13,7 @@ class TaskManager {
         this.initEventListeners(); // Inicializar los event listeners
     }
 
+    //Método que dispara el evento click al botón enter
     initEventListeners() {
         const taskInput = document.getElementById('taskInput');
         taskInput.addEventListener('keydown', (event) => {
@@ -23,16 +24,16 @@ class TaskManager {
     }
 
 
-
+    //Método para añadir tareas
     addTask() {
         const taskInput = document.getElementById('taskInput');
-        const taskName = taskInput.value.trim();
+        const taskName = taskInput.value.trim(); // Elimina espacios al inicio y final del input
         if (taskName !== "") {
             const task = new Task(taskName); // Crear una nueva instancia de Task
             this.tasks.push(task); // Agregar la tarea a la lista
             this.saveTasks(); // Guardar la lista en LocalStorage
             this.displayTasks(); // Mostrar las tareas en la lista
-            taskInput.focus();
+            taskInput.focus(); // Da el focus al input para ingresar nueva tarea
             taskInput.value = ""; // Limpiar el input
         }else {
             swal.fire({
@@ -54,7 +55,7 @@ class TaskManager {
             const li = document.createElement("li");
             li.textContent = task.name;
             
-            //Botón para eliminar la tarea
+            //Botones para eliminar y editar las tareas
             const removeBtn = document.createElement("span");
             const editBtn = document.createElement("span");
             removeBtn.textContent = "❌";
@@ -76,17 +77,19 @@ class TaskManager {
      removeTask(id) {
         this.tasks = this.tasks.filter(task => task.id !== id);
         this.saveTasks(); // Guardar la lista actualizada en LocalStorage
-        this.displayTasks();
+        this.displayTasks(); //Muestra la lista actualizada
     }
 
     //Método para editar una tarea por ID
     editTask(id) {
+        //Uso de la librería sweet alert para un input personalizado
         Swal.fire({
             title: 'Editar tarea',
             input: 'text',
             inputLabel: 'Nuevo nombre de la tarea',
             inputPlaceholder: 'Ingresa el nuevo nombre',
             showCancelButton: true,
+            //value y result pueden ser cualquier cosa
             inputValidator: (value) => {
                 if (!value) {
                     return '¡El campo no puede estar vacío!';

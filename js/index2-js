@@ -1,0 +1,75 @@
+//Paso 1 crear constructores
+class Task {
+    constructor(name){
+        this.name = name,
+        this.id = Date.now();
+    }
+}
+
+class TaskManager {
+    constructor(){
+        this.tasks = this.loadTasks();
+        this.initEventListeners()
+    }
+
+    //Paso 2 crear métodos
+    initEventListeners(){
+        this.taskInput = document.getElementById('taskInput');
+            this.taskInput.addEventListener("keydown", (event) => {
+                if(event.key === "Enter"){
+                    this.addTask();
+                }
+            });
+    }
+
+    addTask(){
+        const taskInput = document.getElementById('taskInput');
+        const taskName = this.taskInput.value.trim();
+        if(this.taskName !== ""){
+            const task = new Task(taskName);
+            this.tasks.push(task);
+            this.tasks.saveTask();
+            this.tasks.displayTasks();
+            taskInput.focus();
+            taskInput.value = "";
+        }else {
+            swal.fire({
+                title: `El campo no puede estar vacío`,
+                icon: "warning",
+                 })
+                 return false
+        }
+    }
+
+    displayTasks(){
+        const taskList = document.getElementById('taskList');
+        taskList.innerHTML = "";
+        this.tasks.forEach(element => {
+            const li = document.createElement("li");
+            li.textContent = element.name
+            const removeBtn = document.createElement("span");
+            const editBtn = document.createElement("span");
+            removeBtn.textContent = "❌";
+            editBtn.textContent = "🖍";
+            editBtn.classList.add("edit");
+            removeBtn.classList.add("remove");
+            editBtn.onclick = () => this.editTask(element.id);
+            removeBtn.onclick = () => this.removeTask(element.id);
+            li.appendChild(editBtn);
+            li.appendChild(removeBtn);
+            taskList.appendChild(li)
+        });
+    }
+
+    removeTask(id){
+        this.tasks = this.tasks.filter(element => element.id !== id);
+        this.saveTask();
+        this.displayTasks();
+    }
+
+    editTask(){
+        
+    }
+
+
+}
