@@ -111,11 +111,13 @@ class TaskManager {
     }
 
      // Guardar las tareas en LocalStorage
+     // "tasks" dentro de las comillas puede ser cualquier cosa
      saveTasks() {
         localStorage.setItem("tasks", JSON.stringify(this.tasks));
     }
 
     // Cargar las tareas de LocalStorage
+    // "tasks" dentro de las comillas puede ser cualquier cosa
     loadTasks() {
         const tasks = localStorage.getItem("tasks");
         return tasks ? JSON.parse(tasks) : [];

@@ -67,9 +67,43 @@ class TaskManager {
         this.displayTasks();
     }
 
-    editTask(){
-        
+    editTask(id){
+        Swal.fire({
+            title: 'Editar tarea',
+            input: 'text',
+            inputLabel: 'Nuevo nombre de la tarea',
+            inputPlaceholder: 'Ingresa el nuevo nombre',
+            showCancelButton: true,
+            //value y result pueden ser cualquier cosa
+            inputValidator: (value) => {
+                if (!value) {
+                    return '¡El campo no puede estar vacío!';
+                }
+            }
+        }).then((result) => {
+            if(result.isConfirmed){
+                const newTaskName = result.value.trim();
+                if(newTaskName){
+                    const task = this.tasks.find(element => element.id === id);
+                    if(task){
+                        task.name  = newTaskName;
+                        this.saveTask();
+                        this.displayTasks();
+                    }
+                }
+            }
+        });
     }
 
+    saveTask(){
+        localStorage.setItem("tasks", JSON.stringify(this.tasks));
+    }
 
+    loadTasks(){
+        const tasks = localStorage.getItem("tasks");
+        return tasks ? JSON.parse(tasks): [];
+    }
 }
+
+const taskManager = new TaskManager();
+taskManager.displayTasks();
