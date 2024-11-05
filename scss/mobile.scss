@@ -4,16 +4,12 @@
 //     content: "\f007";
 //     text-align:right;
 // }
-// #mainheader {
-//     height: fit-content;
-//     .container {
-//         .task-container {
-//             #taskInput {
-//                 padding: 5px 150px;
-//             }
-//             #btn-newTask {
-//                 padding: 5px 100px;
-//             }
-//         }
-//     }
-// }
+#mainheader {
+    .container {
+        .task-container {
+            li {
+          
+            }
+        }
+    }
+}

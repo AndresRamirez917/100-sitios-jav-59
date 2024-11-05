@@ -10,6 +10,16 @@ class Task {
 class TaskManager {
     constructor() {
         this.tasks = this.loadTasks(); // Cargar las tareas de LocalStorage al iniciar
+        this.initEventListeners(); // Inicializar los event listeners
+    }
+
+    initEventListeners() {
+        const taskInput = document.getElementById('taskInput');
+        taskInput.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+                this.addTask();
+            }
+        });
     }
 
 
@@ -22,6 +32,7 @@ class TaskManager {
             this.tasks.push(task); // Agregar la tarea a la lista
             this.saveTasks(); // Guardar la lista en LocalStorage
             this.displayTasks(); // Mostrar las tareas en la lista
+            taskInput.focus();
             taskInput.value = ""; // Limpiar el input
         }else {
             swal.fire({
@@ -39,16 +50,18 @@ class TaskManager {
 
         //Recorrer el localStorage con las tareas y crear un elemento li
         this.tasks.forEach(task => {
+            const div = document.createElement("div");
             const li = document.createElement("li");
             li.textContent = task.name;
-
+            
             //Botón para eliminar la tarea
             const removeBtn = document.createElement("span");
             const editBtn = document.createElement("span");
             removeBtn.textContent = "❌";
-            editBtn.textContent = "🖌";
+            editBtn.textContent = "🖍";
             editBtn.classList.add("edit");
             removeBtn.classList.add("remove");
+            div.classList.add("span-flex")
             editBtn.onclick = () => this.editTask(task.id);
             removeBtn.onclick = () => this.removeTask(task.id);
 
