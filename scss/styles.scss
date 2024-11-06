@@ -200,7 +200,7 @@ body, html {
                     gap: 1px;
                     //justify-content:space-between;
                     background: #aed3f937;
-                    //text-transform: capitalize;
+                    text-transform: capitalize;
                 }
                 span {
                     display: flex;
@@ -210,11 +210,20 @@ body, html {
                 }
                 .edit {
                     width: 100%;
-                    
+                    //box-shadow: 0px 1px rgb(143, 143, 143);
                    
                 }
                
              
         }
     }
+}
+
+#footer {
+    text-align: center;
+    background: rgba(146, 244, 237, 0.733);
+    margin: .5rem 0;
+    padding: 1rem 0;
+    font-size: .7rem;
+    color: #4151c6;
 }
