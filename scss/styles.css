@@ -89,7 +89,6 @@ body, html {
   display: flex;
   gap: 1px;
   background: rgba(174, 211, 249, 0.2156862745);
-  text-transform: capitalize;
 }
 #mainheader .container .task-container span {
   display: flex;

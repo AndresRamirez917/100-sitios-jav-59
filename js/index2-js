@@ -14,17 +14,17 @@ class TaskManager {
 
     //Paso 2 crear métodos
     initEventListeners(){
-        this.taskInput = document.getElementById('taskInput');
-            this.taskInput.addEventListener("keydown", (event) => {
+        taskInput = document.getElementById('taskInput');
+            taskInput.addEventListener("keydown", (event) => {
                 if(event.key === "Enter"){
-                    this.addTask();
+                    addTask();
                 }
             });
     }
 
     addTask(){
         const taskInput = document.getElementById('taskInput');
-        const taskName = this.taskInput.value.trim();
+        const taskName = taskInput.value.trim();
         if(this.taskName !== ""){
             const task = new Task(taskName);
             this.tasks.push(task);
@@ -105,5 +105,6 @@ class TaskManager {
     }
 }
 
+// Paso 3 crear nueva instancia de TaskManager y mostrar las tareas
 const taskManager = new TaskManager();
 taskManager.displayTasks();
