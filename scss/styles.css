@@ -103,11 +103,11 @@ body, html {
 
 #footer {
   text-align: center;
-  background-image: linear-gradient(60deg, rgba(227, 243, 247, 0.4117647059) 0, rgba(12, 192, 237, 0.8235294118) 50%, rgba(12, 192, 237, 0.4470588235) 60%);
-  margin: 0.5rem 0;
+  background-image: linear-gradient(60deg, rgba(227, 243, 247, 0.4117647059) 0, rgba(12, 192, 237, 0.8235294118) 50%, rgba(12, 192, 237, 0.462745098) 70%);
+  margin: 0.1rem 0;
   padding: 1rem 0;
   font-size: 0.7rem;
-  color: #4151c6;
+  color: #ffffff;
   border: none;
   border-radius: 5px;
 }/*# sourceMappingURL=styles.css.map */
