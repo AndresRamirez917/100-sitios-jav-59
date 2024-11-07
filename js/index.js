@@ -28,6 +28,8 @@ class TaskManager {
         const taskName = taskInput.value.trim(); // Elimina espacios al inicio y final del input
         if (taskName !== "") {
             if (this.currentTaskId !== null) {
+                // Si currentTaskId es diferente a su valor en el constructor
+                // El input no está vacío, ni es nulo, entonces es una tarea para editar
                 // Editar tarea existente
                 const task = this.tasks.find(task => task.id === this.currentTaskId);
                 if (task) {
@@ -47,6 +49,7 @@ class TaskManager {
                 title: `El campo no puede estar vacío`,
                 icon: "warning",
             });
+            console.log("tarea creada")
         }
     }
 

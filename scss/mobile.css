@@ -1,1 +1,8 @@
-/*# sourceMappingURL=mobile.css.map */
+#mainheader .container .task-container .remove {
+  position: absolute;
+  margin-left: 20rem;
+}
+#mainheader .container .task-container .edit {
+  position: absolute;
+  padding-left: 18rem;
+}/*# sourceMappingURL=mobile.css.map */

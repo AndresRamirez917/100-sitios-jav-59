@@ -7,8 +7,15 @@
 #mainheader {
     .container {
         .task-container {
-            li {
-          
+            .remove {
+                position: absolute;
+                margin-left: 20rem;
+            }
+            .edit {
+                position: absolute;
+                padding-left: 18rem;
+                //width: 100%;
+                //box-shadow: 0px 1px rgb(143, 143, 143);  
             }
         }
     }
